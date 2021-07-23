@@ -1,37 +1,77 @@
-## Welcome to GitHub Pages
+# Sentiment Analysis on Yelp's Dataset
 
-You can use the [editor on GitHub](https://github.com/rsanchez-dv/Sentiment_Analysis/edit/production/README.md) to maintain and preview the content for your website in Markdown files.
+> Author: Roberto Sanchez, Talent Path: D1 Group
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Table of Contents
 
-### Markdown
+[TOC]
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Overview
 
-```markdown
-Syntax highlighted code block
+This capstone project is centered around the data processing, elementary data analysis, and training of a model to predict user reviews sentiment.
 
-# Header 1
-## Header 2
-### Header 3
+### Business Goals
 
-- Bulleted
-- List
+Create a model to be able to be used in generating sentiments on reviews or comments found in external websites to give insights on what people are talking about outside of Yelp.
 
-1. Numbered
-2. List
+This could give the company insights not easily available on sites where ratings are required or for internal use to determine sentiment on blogs or comments.
 
-**Bold** and _Italic_ and `Code` text
+## Model Deployment
 
-[Link](url) and ![Image](src)
-```
+> Show demo of model
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Technology Stack
 
-### Jekyll Themes
+I'll be using these technologies for this project:
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rsanchez-dv/Sentiment_Analysis/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+* [Jupyter Notebook](https://jupyter.org/) - **Version 6.3.0**
+  * Used for most of the data processing, EDA, and model training.
+* [Python](https://www.python.org/) - **Version 3.8.8**
+  * The main language this project will be done in.
+* [Tensorflow](https://www.tensorflow.org/) - **Version 2.5**
+  * Using Keras to create and train our model.
+* [Nvidia CUDA  Toolkit](https://developer.nvidia.com/cuda-toolkit) - **Version 11.2**
+  * To enable TensorFlow to utilize the GPU to speed up training.
+* [Scikit-learn](https://scikit-learn.org/stable/) - **Version 0.24**
+  * Utilizing metrics reports
+* [Postgres](https://www.postgresql.org/) - **Version 13**
+  * Main database application used to store this data.
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/) - **Version 1.1.2**
+  * Main backend technology to host a usable version of this project to the public.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+## Data Processing
+
+This capstone uses the Yelp dataset found on [Kaggle](https://www.kaggle.com/yelp-dataset/yelp-dataset/) which comprises of multiple files:
+
+* Business Data
+* Check-in Data
+* Review Data
+* Tips Data
+* User Data
+
+The scope of this capstone only requires data from the Review Data JSON file to analyze. From this data I import it using 
+
+## Elementary Data Analysis
+
+Aggregating all the data I looked at the null values found in the dataset:
+
+![Heatmap of several million rows of data.](C:\Users\RSanchez\GitHub\Sentiment_Analysis\null_heatmap.png)
+
+Looking at this I have reviews for every business 
+
+Analyzing the review data showed not that much to consider apart from that there was an imbalance in the data.
+
+Below is a graph of the distribution of the ratings between 1 to 5:
+
+![A bar graph showing the distribution of ratings between 1 to 5. there is a significant amount of 5 stars compared to 1-3 combined.](ratings_distribution.png)
+
+
+
+## Model Training
+
+## Testing Model
+
+## End Notes
+
