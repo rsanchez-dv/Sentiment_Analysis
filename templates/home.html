@@ -1,0 +1,96 @@
+{% extends "layout.html" %} {% block content %}
+<body onload="attrLoader()">
+	<div class="container" id="" style="margin-top: 70px">
+		<div class="card" id="">
+			<div class="card-header text-center">
+				<h4><b>Sentiment Analysis: Predict User Reviews</b></h4> </div>
+			<div class="card-body" id="">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="card">
+							<div class="card-header text-center">
+								<h5><b>Review</b></h5> </div>
+							<form id="inputForm">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-3">
+											<label class="control-label">Input a Review:</label>
+											<button class = "btn btn-sm btn-outline-primary" type="text" data-toggle="popover" title="Inserting Reviews" data-placement="bottom" data-content="Copy and Paste any review on to the input field to the right or write your own!">❓</button>
+										</div>
+										<div class="col-md-9">
+											<input class="form-control" type="text" name="review_text" id="reviewIngestor" placeholder="This place was so..." /> </div>
+									</div>
+									<div class="text-center">
+										<button type="button" class="btn btn-primary" onclick="getResult()" value="submit" style="cursor: pointer"> Analyze Review </button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-header text-center">
+								<h5><b>Prediction Result</b></h5> </div>
+							<div class="card-body">
+								<div class="row"> Review Sentiment: &nbsp;&nbsp; </br>
+									<p id="result"></p>
+									</br>
+									<p id="reviewText"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+function getResult() {
+	if ($("#reviewIngestor").val() !== "") {
+		$("#progressBar").modal("show");
+		$.ajax({
+			type: "POST",
+			url: "{{url_for('getPrediction')}}",
+			data: $("#inputForm").serialize(),
+			success: function(data) {
+				originalReview = $("#reviewIngestor").val()
+				originalReview = "\n\t💬 \"" + originalReview + "\""
+				console.log(originalReview)
+				result = beautifyResults(data)
+				$("#result").html(result);
+				$("#reviewText").html(originalReview);
+        $("#reviewIngestor").val("")
+			},
+			complete: function() {
+				$("#progressBar").modal("hide");
+			},
+		})
+	} else{
+    alert("You need a review to be analyzed...")
+  }
+}
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+function beautifyResults(result) {
+	beautifyRes = ""
+	switch (result) {
+		case "Negative Review":
+			beautifyRes = "🧠 Predicts: 😡 <span class='text-danger font-weight-bold'>Negative Review</span>"
+			break
+		case "Neutral Review":
+			beautifyRes = "🧠 Predicts: 😐 <span class='text-info font-weight-bold'>Neutral Review</span>"
+			break
+		case "Positive Review":
+			beautifyRes = "🧠 Predicts: 🙂 <span class='text-success font-weight-bold'>Positive Review</span>"
+			break
+		default:
+			beautifyRes = "💣 UNKNOWN RESULT"
+	}
+	return beautifyRes
+
+}
+</script>
+
+{% endblock %}
