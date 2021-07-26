@@ -28,7 +28,7 @@ Current Stats:
 
 **Classification Report:**
 
-![Classification Report](2million_classificationReport_linReg.PNG)
+![Classification Report](./resources/2million_classificationReport_linReg.PNG)
 
 
 
@@ -102,17 +102,17 @@ As stated above, Kaggle provided several JSON files with a large amount of data 
 
 Below is a visualization of the data provided by Kaggle showing which features have "NaN " values. Its is clear that the review ratings (review_stars) and reviews (text) are fully populated. Some of the business attributes are sparse but have enough values to be useful for other things. Note several other features were dropped in the Data Processing since they did not provide any insights for the scope of this project.
 
-![Heatmap of several million rows of data.](null_heatmap.png)
+![Heatmap of several million rows of data.](./resources/null_heatmap.png)
 
 ### Looking Closer at the Ratings (review_stars)
 
 This is a sample of 2 million rows from the original 8 million in the dataset. This distribution of ratings has a left skew on it where most of the reviews are 4 to 5 stars.
 
-![A bar graph showing the distribution of ratings between 1 to 5. there is a significant amount of 5 stars compared to 1-3 combined.](ratings_distribution.png)
+![A bar graph showing the distribution of ratings between 1 to 5. there is a significant amount of 5 stars compared to 1-3 combined.](./resources/ratings_distribution.png)
 
 I simplified the ratings to better categorize the sentiment of the review by grouping 1 and 2 star reviews as 'negative', 3 star review as 'neutral', and 4 and 5 star reviews as 'positive'.
 
-![Simplified Barchar showing just the negative, neutral, and positive ratings](ratings_distribution_simplified.png)
+![Simplified Barchar showing just the negative, neutral, and positive ratings](./resources/ratings_distribution_simplified.png)
 
 ### Looking Closer at the Reviews (text)
 
@@ -120,19 +120,19 @@ In order to analyze the text I've calculated the length of each review in the sa
 
 
 
-![Showing a distribution chart of the length of the reviews. Clearly the distribution skews right with a median around 400 characters.](distribution_of_review_length.png)
+![Showing a distribution chart of the length of the reviews. Clearly the distribution skews right with a median around 400 characters.](./resources/distribution_of_review_length.png)
 
 A closer inspection on the range 0 - 2000 we can see that most of  the reviews are around this general area. 
 
-![A zoomed in version of the same distribution chart now focusing on 0 - 2000 characters](distribution_of_review_length_trimmed.png)
+![A zoomed in version of the same distribution chart now focusing on 0 - 2000 characters](./resources/distribution_of_review_length_trimmed.png)
 
 In order to produce a viable word cloud I've had to process all of the text in the sample to remove special characters and stop words from NLTK to produce a viable string to be used in word cloud. Below is a visualization of all of the key words found in the positive reviews.
 
-![Created a word cloud from the positive words after cleaning](wordCloud_positive.png)
+![Created a word cloud from the positive words after cleaning](./resources/wordCloud_positive.png)
 
 As expected, words like "great", "amazing", "good", "love", and "best" came out on top.
 
-![A word cloud showing all the words from the negative reviews](wordCloud_negative.png)
+![A word cloud showing all the words from the negative reviews](./resources/wordCloud_negative.png)
 
 On the negative word cloud, words like "problem", "customer service", "least", "mean",  and "issue" are appearing on the word cloud. 
 
@@ -158,7 +158,7 @@ res = model.prediction(new_test_data)
 
 Below is the results of the prediction, notice that the neutral review has been labeled as negative. This makes sense since the model has a poor recall for neutral reviews as shown in the classification report.
 
-<img src="results.PNG" alt="Results from the prediction" style="zoom:150%;" />
+<img src="./resources/results.PNG" alt="Results from the prediction" style="zoom:150%;" />
 
 
 
