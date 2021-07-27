@@ -8,13 +8,30 @@
 
 ## Overview
 
-This capstone project is centered around the data processing, elementary data analysis, and training of a model to predict user reviews sentiment.
+This capstone project is centered around the data processing, elementary data analysis, and training of a model to predict user review sentiment.
 
 ### Business Goals
 
-Create a model to be able to be used in generating sentiments on reviews or comments found in external websites to give insights on what people are talking about outside of Yelp.
+Create a model to be able to be used in generating sentiment on reviews or comments found in external / internal websites to give insights on how people about certain topics.
 
 This could give the company insights not easily available on sites where ratings are required or for internal use to determine sentiment on blogs or comments.
+
+### Business Applications
+
+By utilizing this model, the business can use it for the following purposes:
+
+**External:**
+
+- Monitoring Brand and Reputation online
+- Product Research
+
+**Internal:**
+
+- Customer Support
+- Customer Feedback
+- Employee Satisfaction
+
+Currently method to achieving this is by using outside resources which come at a cost and increases risk for leaking sensitive data to the public. This product will bypass these outside resources and give the company the ability to do it in house.
 
 ## Model Deployment
 
@@ -22,13 +39,17 @@ This could give the company insights not easily available on sites where ratings
 
 Link: <Pending Link>
 
-Currently the LogisticRegression model is a viable candidate to be used in production for analyzing reviews of services or food. 
+Currently the Logistic Regression model is a viable candidate to be used in production for analyzing reviews of services or food. 
 
-Current Stats: 
+### Classification Report:
 
-**Classification Report:**
+
 
 ![Classification Report](./resources/2million_classificationReport_linReg.PNG)
+
+### Confusion Matrix:
+
+![Confusion Matrix](.\resources\confusionMatrix_logregress.PNG)
 
 
 
@@ -40,12 +61,10 @@ I'll be using these technologies for this project:
   * Used for most of the data processing, EDA, and model training.
 * [Python](https://www.python.org/) - **Version 3.8.8**
   * The main language this project will be done in.
-* [Tensorflow](https://www.tensorflow.org/) - **Version 2.5**
-  * Using Keras to create and train our model.
 * [Nvidia CUDA  Toolkit](https://developer.nvidia.com/cuda-toolkit) - **Version 11.2**
   * To enable TensorFlow to utilize the GPU to speed up training.
 * [Scikit-learn](https://scikit-learn.org/stable/) - **Version 0.24**
-  * Utilizing metrics reports
+  * Utilizing metrics reports and certain models
 * [Postgres](https://www.postgresql.org/) - **Version 13**
   * Main database application used to store this data.
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/) - **Version 1.1.2**
@@ -85,16 +104,18 @@ As stated above, Kaggle provided several JSON files with a large amount of data 
 * Removing Sparse features
 * Saved data frame as a pickle to be used in model training
 
+This stage I performed elementary data analysis where I analyze any null values, see the distribution of my ratings and review lengths.
+
 ### Stage 3 - Cleaning Up Data
 
 **Overview**
 
+* Replace contractions with expanded versions
+* Lemmatized text
 * Removed special characters, dates, emails, and URLs
 * Removed stop_words
-* Remove non-English reviews
-* [IMPROVE] Replace contractions
-* [IMPROVE] Remove newline and tab characters
-* [IMPROVE] Balance Data with either SMOTE or Oversampling
+* Remove non-English text
+* Normalized text
 
 ## Elementary Data Analysis
 
@@ -138,10 +159,17 @@ On the negative word cloud, words like "problem", "customer service", "least", "
 
 ## Model Training
 
-* The logistic regression model was built using a pipeline with TfidfVectorizer
-* Was training using StratifiedKFold for cross-validator with 5 splits
-* Final Results were as pictured above
-* 
+### Model Selection
+
+<img src=".\resources\modelSelection.png" alt="model selection flow chart" style="zoom:50%;" />
+
+These four models were chosen to be trained with this data. Each of these models had a pipeline created with TfidfVectorizer.
+
+### Model Training
+
+* Run a StratifiedKFold with a 5 fold split and analyze the average scores and classification reports
+* Create a single model to generate a confusion matrix
+* Test out model on a handful of examples
 
 ## Testing Model
 
@@ -166,6 +194,9 @@ Below is the results of the prediction, notice that the neutral review has been 
 
 There are some improvements to be made such as the follow:
 
-* Better text cleaning
-* Balancing the data
+* **Balancing the data**
+  * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
+  * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
+* **Hyper-parametrization improvement**
+  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model StratifiedKFold was not used in these two models.
 
