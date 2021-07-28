@@ -37,7 +37,7 @@ Currently method to achieving this is by using outside resources which come at a
 
 > Show demo of model
 
-Link: <Pending Link>
+Link: [Review Analyzer](https://secure-bastion-71984.herokuapp.com/)
 
 Currently the Logistic Regression model is a viable candidate to be used in production for analyzing reviews of services or food. 
 
@@ -93,7 +93,7 @@ This capstone uses the Yelp dataset found on [Kaggle](https://www.kaggle.com/yel
 * Saved copies of each table as CSV file for backup incase Database goes down
 * Exported data into Postgres
 
-As stated above, Kaggle provided several JSON files with a large amount of data that needed to be stored in a location for easy access and provide a quick way to query data on the fly. As the files were read in Jupyter notebook a general observation was made to the feature names and amount each file contained to see what data I was dealing with along with the types associated with them. The business data contained a strange amount of attributes that had to be broken up into separate data frames to be normalized for Postgres. 
+As stated above, Kaggle provided several JSON files with a large amount of data that needed to be stored in a location for easy access and provide a quick way to query data on the fly. As the files were read in Jupyter notebook a general observation was made to the feature names and amount each file contained to see what data I was dealing with along with the types associated with them. The business data contained a strange number of attributes that had to be broken up into separate data frames to be normalized for Postgres. 
 
 ### Stage 2 -  Pre-Processing Data
 
@@ -137,7 +137,7 @@ I simplified the ratings to better categorize the sentiment of the review by gro
 
 ### Looking Closer at the Reviews (text)
 
-In order to analyze the text I've calculated the length of each review in the sample and plotted a distribution graph showing them the number of characters of each review. The statistics were that the median review was approx. 606 characters with a range of 0 through 5000 characters.
+To analyze the text, I've calculated the length of each review in the sample and plotted a distribution graph showing them the number of characters of each review. The statistics were that the median review was approx. 606 characters with a range of 0 through 5000 characters.
 
 
 
@@ -147,7 +147,7 @@ A closer inspection on the range 0 - 2000 we can see that most of  the reviews a
 
 ![A zoomed in version of the same distribution chart now focusing on 0 - 2000 characters](./resources/distribution_of_review_length_trimmed.png)
 
-In order to produce a viable word cloud I've had to process all of the text in the sample to remove special characters and stop words from NLTK to produce a viable string to be used in word cloud. Below is a visualization of all of the key words found in the positive reviews.
+In order to produce a viable word cloud, I've had to process all of the text in the sample to remove special characters and stop words from NLTK to produce a viable string to be used in word cloud. Below is a visualization of all of the key words found in the positive reviews.
 
 ![Created a word cloud from the positive words after cleaning](./resources/wordCloud_positive.png)
 
