@@ -117,7 +117,7 @@ This stage I performed elementary data analysis where I analyze any null values,
 * Remove non-English text
 * Normalized text
 
-## Elementary Data Analysis
+## Exploratory Data Analysis
 
 ### Analyzing Null Values in Dataset
 
@@ -168,6 +168,8 @@ These four models were chosen to be trained with this data. Each of these models
 ### Model Training
 
 * Run a StratifiedKFold with a 5 fold split and analyze the average scores and classification reports
+  * Reasons for choosing 5 fold split
+  * Reasons for StratifiedKFold
 * Create a single model to generate a confusion matrix
 * Test out model on a handful of examples
 
