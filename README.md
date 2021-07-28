@@ -37,7 +37,7 @@ Currently method to achieving this is by using outside resources which come at a
 
 > Show demo of model
 
-Link: Review Analyzer
+Link: [Review Analyzer](https://secure-bastion-71984.herokuapp.com/)
 
 Currently the Logistic Regression model is a viable candidate to be used in production for analyzing reviews of services or food. 
 
