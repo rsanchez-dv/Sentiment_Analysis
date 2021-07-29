@@ -4,13 +4,13 @@
 
 ## Overview
 
-The scope of this capstone is centered around the data processing, exploratory data analysis, and training of a model to predict sentiment on user reviews.
+The scope of this capstone is centered around data processing, exploratory data analysis, and training of a model to predict sentiment on user reviews.
 
 ![End goal of the model](./resources/sentiment-analysis.png)
 
 ### Business Goals
 
-Create a model to be able to be used in generating sentiment on reviews or comments found on external / internal websites to give insights on how people feel about certain topics.
+Create a model to be able to be used in generating sentiment on reviews or comments found on external/internal websites to give insights on how people feel about certain topics.
 
 This could give the company insights not easily available on sites where ratings are required or for internal use to determine sentiment on blogs or comments.
 
@@ -30,7 +30,7 @@ By utilizing this model, the business can use it for the following purposes:
 - Customer Feedback
 - Employee Satisfaction
 
-Currently method to achieving this is by using outside resources which come at a cost and increases risk for leaking sensitive data to the public. This product will bypass these outside resources and give the company the ability to do it in house.
+Current methods of achieving these are using outside resources which come at a cost and increases the risk of leaking sensitive data to the public. This product will bypass these outside resources and give the company the ability to do it in-house.
 
 ![](./resources/middleman.jpg)
 
@@ -98,7 +98,7 @@ As stated above, Kaggle provided several JSON files with a large amount of data 
 * Removing Sparse features
 * Saved data frame as a pickle to be used in model training
 
-This stage I performed elementary data analysis where I analyze any null values, see the distribution of my ratings and review lengths.
+In this stage, I performed exploratory data analysis where I analyze any null values, see the distribution of my ratings, and review lengths.
 
 ### Stage 3 - Cleaning Up Data
 
@@ -115,7 +115,7 @@ This stage I performed elementary data analysis where I analyze any null values,
 
 ### Analyzing Null Values in Dataset
 
-Below is a visualization of the data provided by Kaggle showing which features have "NaN " values. Its is clear that the review ratings (review_stars) and reviews (text) are fully populated. Some of the business attributes are sparse but have enough values to be useful for other things. Note several other features were dropped in the Data Processing since they did not provide any insights for the scope of this project.
+Below is a visualization of the data provided by Kaggle showing which features have "NaN " values. It is clear that the review ratings (review_stars) and reviews (text) are fully populated. Some of the business attributes are sparse but have enough values to be useful for other things. Note several other features were dropped in the Data Processing since they did not provide any insights for the scope of this project.
 
 ![Heatmap of several million rows of data.](./resources/null_heatmap.png)
 
@@ -141,7 +141,7 @@ A closer inspection on the range 0 - 2000 we can see that most of  the reviews a
 
 ![A zoomed in version of the same distribution chart now focusing on 0 - 2000 characters](./resources/distribution_of_review_length_trimmed.png)
 
-In order to produce a viable word cloud, I've had to process all of the text in the sample to remove special characters and stop words from NLTK to produce a viable string to be used in word cloud. Below is a visualization of all of the key words found in the positive reviews.
+In order to produce a viable word cloud, I've had to process all of the text in the sample to remove special characters and stop words from NLTK to produce a viable string to be used in the word cloud. Below is a visualization of all of the keywords found in the positive reviews.
 
 ![Created a word cloud from the positive words after cleaning](./resources/wordCloud_positive.png)
 
@@ -191,11 +191,11 @@ Below is the results of the prediction, notice that the neutral review has been 
 
 ## End Notes
 
-There are some improvements to be made such as the follow:
+There are some improvements to be made such as the following:
 
 * **Balancing the data**
-  * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
-  * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
+  * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
+  * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
 * **Hyper-parametrization improvement**
-  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed Logistic Regression which was the original candidate model.
+  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model, StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed Logistic Regression which was the original candidate model.
 
