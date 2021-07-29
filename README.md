@@ -192,8 +192,11 @@ Below is a screenshot of the results when feed into the LinearSVC model for pred
 There are some improvements to be made such as the following:
 
 * **Balancing the data**
-  * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
-  * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
+  
+  * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
+  
+  * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
 * **Hyper-parametrization improvement**
-  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model, StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed the Logistic Regression model by a small margin which was the original candidate model.
+  
+  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model, StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed the Logistic Regression model by a small margin which was the original candidate model.
 
