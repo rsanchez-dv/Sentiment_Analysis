@@ -2,19 +2,17 @@
 
 > Author: Roberto Sanchez, Talent Path: D1 Group
 
-## Table of Contents
-
-[TOC]
-
 ## Overview
 
-This capstone project is centered around the data processing, elementary data analysis, and training of a model to predict user review sentiment.
+This capstone project is centered around the data processing, exploratory data analysis, and training of a model to predict sentiment on user reviews.
 
 ### Business Goals
 
-Create a model to be able to be used in generating sentiment on reviews or comments found in external / internal websites to give insights on how people about certain topics.
+Create a model to be able to be used in generating sentiment on reviews or comments found in external / internal websites to give insights on how people feel about certain topics.
 
 This could give the company insights not easily available on sites where ratings are required or for internal use to determine sentiment on blogs or comments.
+
+![End goal of the model](./resources/sentiment-analysis.png)
 
 ### Business Applications
 
@@ -33,42 +31,38 @@ By utilizing this model, the business can use it for the following purposes:
 
 Currently method to achieving this is by using outside resources which come at a cost and increases risk for leaking sensitive data to the public. This product will bypass these outside resources and give the company the ability to do it in house.
 
-## Model Deployment
+![](./resources/middleman.jpg)
 
-> Show demo of model
+## Model Deployment
 
 Link: [Review Analyzer](https://secure-bastion-71984.herokuapp.com/)
 
-Currently the Logistic Regression model is a viable candidate to be used in production for analyzing reviews of services or food. 
+After running multiple models and comparing accuracy, I found that the LinearSVC model is a viable candidate to be used in production for analyzing reviews of services or food. 
 
-### Classification Report:
-
-
-
-![Classification Report](./resources/2million_classificationReport_linReg.PNG)
-
-### Confusion Matrix:
-
-![Confusion Matrix](.\resources\confusionMatrix_logregress.PNG)
+### Classification Report / Confusion Matrix:
 
 
+
+![Classification Report](./resources/candidate_metrics.PNG)
 
 ## Technology Stack
 
-I'll be using these technologies for this project:
+I have been using these technologies for this project:
 
 * [Jupyter Notebook](https://jupyter.org/) - **Version 6.3.0**
   * Used for most of the data processing, EDA, and model training.
 * [Python](https://www.python.org/) - **Version 3.8.8**
   * The main language this project will be done in.
-* [Nvidia CUDA  Toolkit](https://developer.nvidia.com/cuda-toolkit) - **Version 11.2**
-  * To enable TensorFlow to utilize the GPU to speed up training.
 * [Scikit-learn](https://scikit-learn.org/stable/) - **Version 0.24**
-  * Utilizing metrics reports and certain models
+  * Utilizing metrics reports and certain models.
 * [Postgres](https://www.postgresql.org/) - **Version 13**
   * Main database application used to store this data.
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/) - **Version 1.1.2**
   * Main backend technology to host a usable version of this project to the public.
+* [GitHub](https://github.com/)
+  * Versioning control and online documentation
+* [Heroku](https://dashboard.heroku.com/apps)
+  * Online cloud platform to host this application for public use
 
 
 
@@ -113,8 +107,8 @@ This stage I performed elementary data analysis where I analyze any null values,
 * Replace contractions with expanded versions
 * Lemmatized text
 * Removed special characters, dates, emails, and URLs
-* Removed stop_words
-* Remove non-English text
+* Removed stop words
+* Remove non-english text
 * Normalized text
 
 ## Exploratory Data Analysis
@@ -151,7 +145,7 @@ In order to produce a viable word cloud, I've had to process all of the text in 
 
 ![Created a word cloud from the positive words after cleaning](./resources/wordCloud_positive.png)
 
-As expected, words like "great", "amazing", "good", "love", and "best" came out on top.
+As expected, words like "delicious", "great", "good", "great place", and "recommend" came out on top.
 
 ![A word cloud showing all the words from the negative reviews](./resources/wordCloud_negative.png)
 
@@ -168,10 +162,13 @@ These four models were chosen to be trained with this data. Each of these models
 ### Model Training
 
 * Run a StratifiedKFold with a 5 fold split and analyze the average scores and classification reports
-  * Reasons for choosing 5 fold split
-  * Reasons for StratifiedKFold
+  * Get an average accuracy of the model for comparison
 * Create a single model to generate a confusion matrix
 * Test out model on a handful of examples
+
+Below is the average metrics after running 5 fold cross validation on LinearSVC
+
+![average metrics for linearSVC model](./resources/average_metrics.PNG)
 
 ## Testing Model
 
@@ -200,5 +197,5 @@ There are some improvements to be made such as the follow:
   * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
   * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
 * **Hyper-parametrization improvement**
-  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model StratifiedKFold was not used in these two models.
+  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed Logistic Regression which was the original candidate model.
 
