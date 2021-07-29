@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import os
 import pickle
 
-loaded_model = pickle.load(open("svc_model.sav", "rb"))
+loaded_model_logReg = pickle.load(open("logReg_model.sav", "rb"))
 
 app = Flask(__name__)
 
@@ -23,7 +23,7 @@ def getPrediction():
 
 
 def make_prediction_linReg(text):
-    res = loaded_model.predict([text])
+    res = loaded_model_logReg.predict([text])
     result = ""
     if res == 0:
         result = "Negative Review"
