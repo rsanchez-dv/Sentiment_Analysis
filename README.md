@@ -10,7 +10,7 @@ The scope of this capstone is centered around the data processing, exploratory d
 
 ### Business Goals
 
-Create a model to be able to be used in generating sentiment on reviews or comments found in external / internal websites to give insights on how people feel about certain topics.
+Create a model to be able to be used in generating sentiment on reviews or comments found on external / internal websites to give insights on how people feel about certain topics.
 
 This could give the company insights not easily available on sites where ratings are required or for internal use to determine sentiment on blogs or comments.
 
@@ -39,8 +39,6 @@ Currently method to achieving this is by using outside resources which come at a
 Link: [Review Analyzer](https://secure-bastion-71984.herokuapp.com/)
 
 After running multiple models and comparing accuracy, I found that the LinearSVC model is a viable candidate to be used in production for analyzing reviews of services or food. 
-
-### Classification Report / Confusion Matrix:
 
 ### Classification Report / Confusion Matrix:
 
