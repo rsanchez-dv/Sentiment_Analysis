@@ -4,7 +4,9 @@
 
 ## Overview
 
-This capstone project is centered around the data processing, exploratory data analysis, and training of a model to predict sentiment on user reviews.
+The scope of this capstone is centered around the data processing, exploratory data analysis, and training of a model to predict sentiment on user reviews.
+
+![End goal of the model](./resources/sentiment-analysis.png)
 
 ### Business Goals
 
@@ -12,7 +14,6 @@ Create a model to be able to be used in generating sentiment on reviews or comme
 
 This could give the company insights not easily available on sites where ratings are required or for internal use to determine sentiment on blogs or comments.
 
-![End goal of the model](./resources/sentiment-analysis.png)
 
 ### Business Applications
 
@@ -41,6 +42,7 @@ After running multiple models and comparing accuracy, I found that the LinearSVC
 
 ### Classification Report / Confusion Matrix:
 
+### Classification Report / Confusion Matrix:
 
 
 ![Classification Report](./resources/candidate_metrics.PNG)
@@ -145,11 +147,11 @@ In order to produce a viable word cloud, I've had to process all of the text in 
 
 ![Created a word cloud from the positive words after cleaning](./resources/wordCloud_positive.png)
 
-As expected, words like "delicious", "great", "good", "great place", and "recommend" came out on top.
+As expected, words like "perfect", "great", "good", "great place", and "highly recommend" came out on top.
 
 ![A word cloud showing all the words from the negative reviews](./resources/wordCloud_negative.png)
 
-On the negative word cloud, words like "problem", "customer service", "least", "mean",  and "issue" are appearing on the word cloud. 
+On the negative word cloud, words like "bad", "customer service", "never", "horrible",  and "awful" are appearing on the word cloud. 
 
 ## Model Training
 
