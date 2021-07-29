@@ -177,15 +177,13 @@ After the model was trained, I fed it some reviews I found online to test out wh
 ```python
 new_test_data = [
     "This was the worst place I've ever eaten at. The staff was rude and did not take my order until after i pulled out my wallet.",
-    "The food was alright, nothing special about this place. I would recommend going elsewhere.",
+    "It was ok, I guess",
     "I had a pleasent time with kimberly at the granny shack. The food was amazing and very family friendly.",
 ]
 res = model.prediction(new_test_data)
 ```
 
-Below is the results of the prediction, notice that the neutral review has been labeled as negative. This makes sense since the model has a poor recall for neutral reviews as shown in the classification report.
-
-<img src="./resources/results.PNG" alt="Results from the prediction" style="zoom:150%;" />
+Below is a screenshot of the results when feed into the LinearSVC model for predictions.<img src="./resources/results.PNG" alt="Results from the prediction" style="zoom:150%;" />
 
 
 
@@ -197,5 +195,5 @@ There are some improvements to be made such as the following:
   * This can be seen in the confusion matrix for the candidate models and other models created that the predictions come out more positive than negative or neutral.
   * While having poor scores in the neutral category, the most important features are found in the negative and positive predictions for business applications.
 * **Hyper-parametrization improvement**
-  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model, StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed Logistic Regression which was the original candidate model.
+  * Logistic Regression and Multinomial NB models produced models within a reasonable time frame while returning reasonable scores. Random Forrest Classifier and SVM took a **significant** amount of time to produce just one iteration. In order to produce results from this model, StratifiedKFold was not used in these two models. Changing SVM to LinearSVC improved performance dramatically and replaced the SVM model and outperformed the Logistic Regression model by a small margin which was the original candidate model.
 
