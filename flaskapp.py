@@ -1,10 +1,6 @@
 from flask import Flask, request, render_template
 import os
 import pickle
-import zipfile
-
-with zipfile.ZipFile('svc_model.zip', 'r') as zip_ref:
-    zip_ref.extractall('.')
 
 loaded_model = pickle.load(open("svc_model.sav", "rb"))
 
