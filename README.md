@@ -2,6 +2,20 @@
 
 > Author: Roberto Sanchez, Talent Path: D1 Group
 
+## Docker Deployment:
+
+Deployment of this application can be found [here](http://54.241.130.105:5000/) hosted on AWS
+
+Running it locally: 
+
+```bash
+docker pull rsanchez2892/sentiment_analysis_app
+```
+
+
+
+
+
 ## Overview
 
 The scope of this capstone is centered around the data processing, exploratory data analysis, and training of a model to predict sentiment on user reviews.
